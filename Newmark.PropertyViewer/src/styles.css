@@ -1,0 +1,17 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  font-size: 15px; /* Reduced font size */
+}
+
+h2, h3, h4 {
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+p, li {
+  line-height: 1.6;
+}

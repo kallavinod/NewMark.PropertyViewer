@@ -1,0 +1,71 @@
+<div class="header">
+  <h1>Property Management</h1>
+</div>
+<div *ngIf="selectedProperty">
+  <div class="layout">
+    <!-- Left Navigation -->
+    <div class="navigation">
+      <h3>Properties</h3>
+      <ul>
+        <li *ngFor="let property of properties"
+            (click)="selectProperty(property)"
+            [class.active]="selectedProperty === property">
+          {{ property.propertyName }}
+        </li>
+      </ul>
+    </div>
+
+    <!-- Details Section -->
+    <div class="details">
+      <h2>{{ selectedProperty.propertyName }} ({{ selectedProperty.propertyId }})</h2>
+
+      <div class="section">
+        <h3>Features</h3>
+        <ul>
+          <li *ngFor="let feature of selectedProperty.features">
+            {{ feature }}
+          </li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>Highlights</h3>
+        <ul>
+          <li *ngFor="let highlight of selectedProperty.highlights">
+            {{ highlight }}
+          </li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>Transportation</h3>
+        <ul>
+          <li *ngFor="let transport of selectedProperty.transportation">
+            {{ transport.type }}: {{ transport.line || transport.station }} ({{ transport.distance }})
+          </li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>Spaces</h3>
+        <div *ngFor="let space of selectedProperty.spaces" class="space">
+          <h4>{{ space.spaceName }} ({{ space.spaceId }})</h4>
+          <table>
+            <thead>
+              <tr>
+                <th>Month</th>
+                <th>Rent</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let rent of space.rentRoll">
+                <td>{{ rent.month }}</td>
+                <td>{{ rent.rent | currency }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
